@@ -1,0 +1,13 @@
+create or replace trigger dml_trigger
+before delete or update or insert on studentstwo
+for each row
+Begin 
+if updating('MARKS') Then
+insert into studentbackup values(:old.registration,
+								 :old.name,
+								 :old.marks,
+								 :old.registration,
+								 :old.name,
+								 :new.marks);
+end if;
+end;

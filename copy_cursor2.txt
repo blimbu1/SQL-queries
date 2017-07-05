@@ -1,0 +1,15 @@
+create or replace procedure koreaTwo
+Is 
+cursor all_records is select * from students;
+r students.registration%type;
+n students.name%type;
+m students.marks%type;
+Begin
+open all_records;
+loop
+fetch all_records into r ,n, m;
+exit when all_records%notfound;
+insert into studentsTwo values(r,n,m);
+end loop;
+close all_records;
+end;

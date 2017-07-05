@@ -1,0 +1,11 @@
+create or replace procedure category2(id in number)
+Is
+cata char(20);
+result number(3);
+Begin
+select product, quantity into cata,result
+from asda
+where price = id;
+dbms_output.put_line(cata||result);
+End;
+/

@@ -1,0 +1,14 @@
+create or replace procedure koreaOne
+Is 
+rec qa%rowtype;
+cursor x is select * from qa;
+Begin 
+open x;
+loop
+fetch x into rec;
+exit when x%notfound;
+dbms_output.put_line('Name = '||rec.name);
+dbms_output.put_line('Grp = '||rec.grp);
+end loop;
+close x;
+end;

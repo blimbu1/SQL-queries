@@ -1,0 +1,9 @@
+create or replace function showdata(a in number)
+return char
+Is
+n qa.name%type;
+Begin
+select name into n from qa where regno=a;
+return n;
+end;
+/

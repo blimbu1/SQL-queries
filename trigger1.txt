@@ -1,0 +1,12 @@
+create or replace trigger trigger1
+before update on students 
+for each row
+Begin 
+insert into studentbackup
+values(:old.registration,
+	   :old.name,
+	   :old.marks,
+	   :new.registration,
+	   :new.name,
+	   :new.marks);
+end;

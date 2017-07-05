@@ -1,0 +1,10 @@
+create or replace procedure category3(id in number)
+Is 
+cata qa.name%type;
+maak qa.marks%type;
+Begin
+select name, marks into cata , maak
+from qa
+where regno = id;
+dbms_output.put_line(cata||maak);
+end;

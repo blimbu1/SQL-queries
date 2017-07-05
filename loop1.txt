@@ -1,0 +1,23 @@
+create or replace procedure copy
+Is
+cursor all_records is select * from qa;
+r qa.regno%type;
+n qa.name%type;
+g qa.grp%type;
+a qa.area%type;
+m qa.marks%type;
+
+Begin
+open all_records;
+Loop
+Fetch all_records into r,n,g,a,m;
+if all_records%notfound then
+exit;
+end if;
+if g = 'ONS' Then insert into Backup1 values(r,n,g,a,m);
+end if;
+if g = 'BAE' Then insert into Backup2 values(r,n,g,a,m);
+end if;
+end loop;
+close all_records;
+end;
